@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Austin Van Arsdale — Enterprise cybersecurity consulting for growing businesses. Detection engineering, cloud security, penetration testing, and compliance. 15+ years protecting healthcare, finance, public sector, and critical infrastructure.">
+    <meta name="keywords" content="cybersecurity consultant, detection engineering, cloud security, penetration testing, SIEM, Splunk, CrowdStrike, compliance, NIST, Nashville">
+    <title>Austin Van Arsdale | Enterprise Cybersecurity Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a1628;
+            --secondary: #1a2a4a;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-bright: #f8fafc;
+            --surface: #0f1d32;
+            --surface-light: #162240;
+            --border: #1e3a5f;
+            --success: #22c55e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-bright);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                var(--primary);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--text-bright);
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .hero-columns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            text-align: left;
+        }
+
+        .hero-col-header {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .hero-col-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .hero-cap {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--text-muted);
+            background: rgba(59, 130, 246, 0.04);
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            transition: border-color 0.3s, color 0.3s, background 0.3s;
+            white-space: nowrap;
+        }
+
+        .hero-cap:hover {
+            border-color: var(--accent);
+            color: var(--text-bright);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .hero-cap.featured {
+            color: var(--accent);
+            font-weight: 600;
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 1.5rem;
+            opacity: 0.4;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--text-bright);
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* INDUSTRIES */
+        .industries {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .industries-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .industry-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .industry-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+        }
+
+        /* CREDENTIALS */
+        .credentials {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cred-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .cred-item {
+            text-align: center;
+        }
+
+        .cred-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.25rem;
+        }
+
+        .cred-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-inner p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .about-inner p:last-child {
+            margin-bottom: 0;
+        }
+
+        .client-refs {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+
+        .contact-meta {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-meta a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-columns {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+
+            .hero-cap {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .hero-col-header {
+                font-size: 0.55rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">AUSTIN <span>VAN ARSDALE</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Toggle navigation">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#credentials">Credentials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Cybersecurity Consulting</div>
+            <h1>Enterprise Cybersecurity for Growing Businesses</h1>
+            <p class="hero-sub">15+ years protecting healthcare, finance, public sector, and critical infrastructure — from Fortune 500 to mid-market.</p>
+            <div class="hero-columns">
+                <div class="hero-col">
+                    <div class="hero-col-header">Offense &amp; Assessment</div>
+                    <div class="hero-col-items">
+                        <span class="hero-cap featured">Penetration Testing</span>
+                        <span class="hero-cap featured">Vulnerability Assessment</span>
+                        <span class="hero-cap">Red Team Exercises</span>
+                        <span class="hero-cap">Social Engineering</span>
+                        <span class="hero-cap">Security Hardening</span>
+                    </div>
+                </div>
+                <div class="hero-col">
+                    <div class="hero-col-header">Detection &amp; Response</div>
+                    <div class="hero-col-items">
+                        <span class="hero-cap featured">Detection Engineering</span>
+                        <span class="hero-cap featured">SIEM &amp; SOAR Automation</span>
+                        <span class="hero-cap">Incident Response &amp; DFIR</span>
+                        <span class="hero-cap">Endpoint Detection &amp; Response</span>
+                        <span class="hero-cap">Threat Intelligence &amp; Hunting</span>
+                        <span class="hero-cap">DNS Threat Analytics</span>
+                    </div>
+                </div>
+                <div class="hero-col">
+                    <div class="hero-col-header">Cloud &amp; Infrastructure</div>
+                    <div class="hero-col-items">
+                        <span class="hero-cap featured">Cloud Security Architecture</span>
+                        <span class="hero-cap featured">Zero Trust Implementation</span>
+                        <span class="hero-cap">DevSecOps</span>
+                        <span class="hero-cap">Privileged Access Management</span>
+                        <span class="hero-cap">OT / ICS / SCADA Security</span>
+                    </div>
+                </div>
+                <div class="hero-col">
+                    <div class="hero-col-header">Governance &amp; Resilience</div>
+                    <div class="hero-col-items">
+                        <span class="hero-cap featured">Agentic AI Orchestration</span>
+                        <span class="hero-cap featured">Compliance &amp; Risk Assessment</span>
+                        <span class="hero-cap">Business Continuity &amp; HA</span>
+                        <span class="hero-cap">Backup &amp; Disaster Recovery</span>
+                        <span class="hero-cap">Audit &amp; Remediation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-divider"></div>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+                <a href="#services" class="btn-secondary">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years Enterprise Security</p>
+            </div>
+            <div class="stat-item">
+                <h3>500K+</h3>
+                <p>Systems Secured</p>
+            </div>
+            <div class="stat-item">
+                <h3>300+</h3>
+                <p>High-Severity Threats Investigated</p>
+            </div>
+            <div class="stat-item">
+                <h3>71%</h3>
+                <p>Vulnerability Reduction Achieved</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <p class="section-label">Services</p>
+        <h2 class="section-title">Security Solutions Engineered for Results</h2>
+        <p class="section-desc">Hands-on engineering and architecture — not slide decks. Every engagement delivers measurable security improvements tailored to the business.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#128737;</div>
+                <h3>Detection Engineering &amp; SIEM Operations</h3>
+                <p>Custom threat detection pipelines built on Splunk, Chronicle, and Sumo Logic. Machine learning anomaly detection, correlation searches, and SOC playbook development to catch real threats and suppress false positives.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#9729;</div>
+                <h3>Cloud Security Architecture &amp; DevSecOps</h3>
+                <p>Secure AWS, Azure, and GCP environments from the ground up. IAM/PAM governance, Zero Trust implementation, CI/CD pipeline security, and cloud-native infrastructure hardening across multi-cloud deployments.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128269;</div>
+                <h3>Penetration Testing &amp; Vulnerability Management</h3>
+                <p>Full-spectrum offensive security — web application testing, internal network assessments, social engineering campaigns, and vulnerability remediation planning using Metasploit, Burp Suite, Nmap, and Horizon3.ai.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128203;</div>
+                <h3>Compliance, Risk Assessment &amp; Incident Response</h3>
+                <p>NIST, ISO 27001, HIPAA, PCI-DSS, and SOX alignment. Risk assessments built on NIST SP 800-53A Rev 5, incident response planning, and OT/ICS/SCADA security for critical infrastructure environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="industries">
+        <div class="industries-inner">
+            <p class="section-label">Industries Served</p>
+            <h2 class="section-title">Proven Across Sectors</h2>
+            <div class="industry-tags">
+                <span class="industry-tag">Healthcare</span>
+                <span class="industry-tag">Finance &amp; Insurance</span>
+                <span class="industry-tag">Public Sector</span>
+                <span class="industry-tag">Critical Infrastructure</span>
+                <span class="industry-tag">Retail &amp; Distribution</span>
+                <span class="industry-tag">Manufacturing &amp; OT/ICS</span>
+                <span class="industry-tag">Technology</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="credentials" id="credentials">
+        <p class="section-label">Credentials</p>
+        <h2 class="section-title">Education &amp; Certifications</h2>
+        <div class="cred-grid">
+            <div class="cred-item">
+                <h4>MS Cybersecurity</h4>
+                <p>Cyber Operations — Utica University</p>
+            </div>
+            <div class="cred-item">
+                <h4>BS Cybersecurity</h4>
+                <p>Summa Cum Laude — Utica University</p>
+            </div>
+            <div class="cred-item">
+                <h4>CCSP</h4>
+                <p>(ISC)&sup2; Certified Cloud Security Professional</p>
+            </div>
+            <div class="cred-item">
+                <h4>NSA CAE</h4>
+                <p>Cyber Defense Education</p>
+            </div>
+            <div class="cred-item">
+                <h4>Six Sigma Green Belt</h4>
+                <p>Lean / ITIL Certified</p>
+            </div>
+            <div class="cred-item">
+                <h4>CCNA</h4>
+                <p>Cisco Certified Network Associate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Built to Operate, Not Just Advise</h2>
+            <p>Austin Van Arsdale is a cybersecurity engineer and consultant who builds, deploys, and operates the systems that protect enterprise environments — not someone who delivers a PDF and walks away. With over 15 years of hands-on experience across detection engineering, cloud security, incident response, and penetration testing, every engagement is rooted in operational reality.</p>
+            <p>The approach is straightforward: understand the threat landscape, engineer targeted defenses, automate what can be automated, and leave the organization stronger than before. Specializations include SIEM and SOAR architecture, ML-driven threat detection, privileged access management, and DevSecOps integration across hybrid and multi-cloud environments.</p>
+            <p class="client-refs">Previous and current engagements include the City of San Diego, CVS Health, NetApp, QBE Insurance Group, Dollar General Corporation, and Brookdale Senior Living.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Start a Conversation</h2>
+        <p class="section-desc" style="margin: 0 auto 1.5rem;">Include a brief overview of the project or challenge, timeline, and any specific security needs. Responses are typically within one business day.</p>
+        <a href="mailto:ipseitech@gmail.com?subject=Cybersecurity%20Consulting%20Inquiry&body=Name%3A%20%0AOrganization%3A%20%0A%0AProject%20Overview%3A%0A%0A" class="btn-primary" style="display: inline-block; text-align: center; padding: 1rem 3rem; font-size: 1rem;">Send an Email</a>
+        <p class="contact-meta" style="margin-top: 2rem;">Nashville, TN — Serving clients worldwide<br><a href="mailto:ipseitech@gmail.com">ipseitech@gmail.com</a></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-copy">&copy; 2025 Austin Van Arsdale. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                <a href="mailto:ipseitech@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
